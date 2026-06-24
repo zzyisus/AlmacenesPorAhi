@@ -26,7 +26,7 @@ namespace AlmacenesPorAhi.Views
             btnIngresar.IsEnabled = false;
             btnIngresar.Text = "Ingresando...";
 
-            // Small delay for UX feedback
+            // Pequeño retraso en la retroalimentación de UX
             await Task.Delay(300);
 
             bool acceso = _auth.Login(txtUsuario.Text.Trim(), txtPassword.Text);
