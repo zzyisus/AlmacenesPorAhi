@@ -17,7 +17,7 @@ namespace AlmacenesPorAhi.Models
         public string Categoria { get; set; }
         public int StockMinimo { get; set; } = 5;
 
-        // Computed helper
+        
         public bool StockBajo => Stock <= StockMinimo;
         public string StockEstado => Stock == 0 ? "Sin stock" : StockBajo ? "Stock bajo" : "En stock";
         public string StockColor => Stock == 0 ? "#DC2626" : StockBajo ? "#D97706" : "#16A34A";
