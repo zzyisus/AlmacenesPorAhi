@@ -67,7 +67,7 @@
                             CornerRadius="12" HeightRequest="52" FontAttributes="Bold"
                             FontSize="16" Margin="0,8,0,0" />
 
-                    <!-- Hint -->
+                    <!-- Usuario -->
                     <Label Text="💡 Demo: usuario admin, contraseña 1234"
                            FontSize="11" TextColor="#94A3B8"
                            HorizontalOptions="Center" />
