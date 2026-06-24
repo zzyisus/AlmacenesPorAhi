@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.DevolucionPage"
+             Title="DevolucionPage">
+    <VerticalStackLayout Padding="20">
+
+        <Label Text="Registrar Devolución"
+           FontSize="24"/>
+
+        <Entry x:Name="txtProducto"
+           Placeholder="ID Producto"/>
+
+        <Entry x:Name="txtCantidad"
+           Placeholder="Cantidad"
+           Keyboard="Numeric"/>
+
+        <Entry x:Name="txtMotivo"
+           Placeholder="Motivo"/>
+
+        <Button Text="Registrar"
+            Clicked="Registrar_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

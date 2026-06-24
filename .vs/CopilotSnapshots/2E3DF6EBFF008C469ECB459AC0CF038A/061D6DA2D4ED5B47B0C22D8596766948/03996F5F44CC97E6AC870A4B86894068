@@ -1,0 +1,35 @@
+﻿using AlmacenesPorAhi.Services;
+
+namespace AlmacenesPorAhi.Views;
+
+public partial class LoginPage : ContentPage
+{
+    AuthService auth = new AuthService();
+
+    public LoginPage()
+    {
+        InitializeComponent();
+    }
+
+    private async void BtnIngresar_Clicked(
+        object sender,
+        EventArgs e)
+    {
+        bool acceso = auth.Login(
+            txtUsuario.Text,
+            txtPassword.Text);
+
+        if (acceso)
+        {
+            await Navigation.PushAsync(
+                new InventarioPage());
+        }
+        else
+        {
+            await DisplayAlert(
+                "Error",
+                "Credenciales incorrectas",
+                "OK");
+        }
+    }
+}

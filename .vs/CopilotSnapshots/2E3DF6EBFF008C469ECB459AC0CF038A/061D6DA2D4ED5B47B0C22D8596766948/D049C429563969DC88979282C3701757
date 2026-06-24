@@ -1,0 +1,35 @@
+﻿using AlmacenesPorAhi.Models;
+using AlmacenesPorAhi.Services;
+
+namespace AlmacenesPorAhi.Views;
+
+public partial class DevolucionPage : ContentPage
+{
+    public DevolucionPage()
+    {
+        InitializeComponent();
+    }
+
+    private async void Registrar_Clicked(
+        object sender,
+        EventArgs e)
+    {
+        Producto producto = new Producto
+        {
+            Id = int.Parse(txtProducto.Text),
+            Stock = 10
+        };
+
+        DevolucionService servicio =
+            new DevolucionService();
+
+        servicio.RegistrarDevolucion(
+            producto,
+            int.Parse(txtCantidad.Text));
+
+        await DisplayAlert(
+            "Éxito",
+            "Devolución registrada",
+            "OK");
+    }
+}

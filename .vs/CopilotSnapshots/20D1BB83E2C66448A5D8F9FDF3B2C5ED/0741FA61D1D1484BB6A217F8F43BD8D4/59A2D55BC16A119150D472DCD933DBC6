@@ -1,0 +1,52 @@
+﻿using AlmacenesPorAhi.Models;
+using AlmacenesPorAhi.Services;
+
+namespace AlmacenesPorAhi.Views
+{
+    public partial class DevolucionPage : ContentPage
+    {
+        InventarioService inventario = new InventarioService();
+        DevolucionService devoluciones = new DevolucionService();
+
+        public DevolucionPage()
+        {
+            InitializeComponent();
+
+            lblFecha.Text = System.DateTime.Now.ToString("g");
+        }
+
+        private async void Registrar_Clicked(
+            object sender,
+            EventArgs e)
+        {
+            if (!int.TryParse(txtProducto.Text, out var id))
+            {
+                await DisplayAlert("Error", "ID de producto inválido", "OK");
+                return;
+            }
+
+            if (!int.TryParse(txtCantidad.Text, out var cantidad) || cantidad <= 0)
+            {
+                await DisplayAlert("Error", "Cantidad inválida", "OK");
+                return;
+            }
+
+            var producto = inventario.ObtenerPorId(id);
+            if (producto == null)
+            {
+                await DisplayAlert("Error", "Producto no encontrado", "OK");
+                return;
+            }
+
+            devoluciones.RegistrarDevolucion(producto, cantidad);
+            inventario.AjustarStock(id, cantidad);
+
+            await DisplayAlert("Éxito", "Devolución registrada", "OK");
+
+            // clear fields
+            txtProducto.Text = string.Empty;
+            txtCantidad.Text = string.Empty;
+            txtMotivo.Text = string.Empty;
+        }
+    }
+}

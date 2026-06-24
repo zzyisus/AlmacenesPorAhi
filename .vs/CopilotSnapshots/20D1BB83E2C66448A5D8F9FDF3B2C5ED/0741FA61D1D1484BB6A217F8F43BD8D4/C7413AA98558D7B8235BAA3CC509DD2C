@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Services
+{
+    public class InventarioService
+    {
+        public List<Producto> ObtenerProductos()
+        {
+            return new List<Producto>()
+            {
+                new Producto
+                {
+                    Id = 1,
+                    Nombre = "Polera",
+                    Talla = "M",
+                    Color = "Negro",
+                    Precio = 15000,
+                    Stock = 10
+                },
+
+                new Producto
+                {
+                    Id = 2,
+                    Nombre = "Pantalón",
+                    Talla = "L",
+                    Color = "Azul",
+                    Precio = 25000,
+                    Stock = 8
+                }
+            };
+        }
+    }
+}

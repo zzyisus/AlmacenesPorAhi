@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.DashboardPage"
+             Title="Inicio"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salir" Clicked="BtnSalir_Clicked" IconImageSource="logout.png" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Bienvenida -->
+            <Frame BackgroundColor="#1E3A5F" CornerRadius="16" HasShadow="True" Padding="20">
+                <VerticalStackLayout Spacing="4">
+                    <Label x:Name="lblBienvenida" Text="¡Bienvenido!" FontSize="20"
+                           FontAttributes="Bold" TextColor="White" />
+                    <Label x:Name="lblRol" Text="" FontSize="13" TextColor="#93C5FD" />
+                    <Label x:Name="lblFecha" Text="" FontSize="12" TextColor="#64748B" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Estadísticas rápidas -->
+            <Label Text="Resumen de inventario" FontSize="16" FontAttributes="Bold"
+                   TextColor="#1E293B" />
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                <Frame Grid.Column="0" BackgroundColor="White" CornerRadius="12"
+                       HasShadow="True" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="📦" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="lblTotalProductos" Text="0" FontSize="22"
+                               FontAttributes="Bold" TextColor="#1E3A5F" HorizontalOptions="Center" />
+                        <Label Text="Productos" FontSize="11" TextColor="#64748B"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Column="1" BackgroundColor="#FFFBEB" CornerRadius="12"
+                       HasShadow="True" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="⚠️" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="lblStockBajo" Text="0" FontSize="22"
+                               FontAttributes="Bold" TextColor="#D97706" HorizontalOptions="Center" />
+                        <Label Text="Stock bajo" FontSize="11" TextColor="#64748B"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame Grid.Column="2" BackgroundColor="#FEF2F2" CornerRadius="12"
+                       HasShadow="True" Padding="12">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="❌" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="lblSinStock" Text="0" FontSize="22"
+                               FontAttributes="Bold" TextColor="#DC2626" HorizontalOptions="Center" />
+                        <Label Text="Sin stock" FontSize="11" TextColor="#64748B"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Accesos rápidos -->
+            <Label Text="Acciones rápidas" FontSize="16" FontAttributes="Bold"
+                   TextColor="#1E293B" Margin="0,8,0,0" />
+
+            <Button Text="📋  Ver Inventario" Clicked="BtnInventario_Clicked"
+                    BackgroundColor="#1E3A5F" TextColor="White" CornerRadius="12"
+                    HeightRequest="52" FontSize="16" />
+
+            <Button Text="↩️  Registrar Devolución" Clicked="BtnDevoluciones_Clicked"
+                    BackgroundColor="White" TextColor="#1E3A5F" CornerRadius="12"
+                    HeightRequest="52" FontSize="16"
+                    BorderColor="#1E3A5F" BorderWidth="1.5" />
+
+            <Button Text="📊  Historial de Devoluciones" Clicked="BtnHistorial_Clicked"
+                    BackgroundColor="White" TextColor="#475569" CornerRadius="12"
+                    HeightRequest="52" FontSize="16"
+                    BorderColor="#CBD5E1" BorderWidth="1" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

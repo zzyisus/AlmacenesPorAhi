@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AlmacenesPorAhi.Models
+{
+    public class Producto
+    {
+        public int Id { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Talla { get; set; }
+
+        public string Color { get; set; }
+
+        public decimal Precio { get; set; }
+
+        public int Stock { get; set; }
+
+        // Optional image and description to improve UI
+        public string ImageUrl { get; set; }
+
+        public string Description { get; set; }
+    }
+}

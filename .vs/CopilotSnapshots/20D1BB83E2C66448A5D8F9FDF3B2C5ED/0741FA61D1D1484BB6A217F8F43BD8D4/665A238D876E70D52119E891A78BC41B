@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Services
+{
+    public class DevolucionService
+    {
+        private readonly List<Devolucion> _devoluciones = new List<Devolucion>();
+
+        public void RegistrarDevolucion(
+            Producto producto,
+            int cantidad,
+            string motivo = null)
+        {
+            producto.Stock += cantidad;
+
+            var d = new Devolucion
+            {
+                IdProducto = producto.Id,
+                Cantidad = cantidad,
+                Motivo = motivo ?? string.Empty,
+                Fecha = DateTime.Now
+            };
+
+            _devoluciones.Add(d);
+        }
+
+        public IEnumerable<Devolucion> ObtenerDevoluciones()
+        {
+            return _devoluciones;
+        }
+    }
+}

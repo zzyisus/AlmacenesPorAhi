@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Services
+{
+    public class InventarioService
+    {
+        private readonly List<Producto> _productos;
+
+        public InventarioService()
+        {
+            _productos = new List<Producto>()
+            {
+                new Producto
+                {
+                    Id = 1,
+                    Nombre = "Polera",
+                    Talla = "M",
+                    Color = "Negro",
+                    Precio = 15000,
+                    Stock = 10,
+                    ImageUrl = "polera.png",
+                    Description = "Polera cómoda de algodón"
+                },
+
+                new Producto
+                {
+                    Id = 2,
+                    Nombre = "Pantalón",
+                    Talla = "L",
+                    Color = "Azul",
+                    Precio = 25000,
+                    Stock = 8,
+                    ImageUrl = "pantalon.png",
+                    Description = "Pantalón casual resistente"
+                }
+            };
+        }
+
+        public List<Producto> ObtenerProductos()
+        {
+            return _productos;
+        }
+
+        public Producto ObtenerPorId(int id)
+        {
+            return _productos.FirstOrDefault(p => p.Id == id);
+        }
+
+        public void AjustarStock(int id, int delta)
+        {
+            var p = ObtenerPorId(id);
+            if (p != null)
+                p.Stock += delta;
+        }
+    }
+}

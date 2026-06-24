@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Services
+{
+    public class AuthService
+    {
+        private readonly List<Usuario> _users = new List<Usuario>();
+
+        public AuthService()
+        {
+            // create a demo admin user with hashed password
+            if (!_users.Any())
+            {
+                _users.Add(new Usuario
+                {
+                    UsuarioNombre = "admin",
+                    Password = HashPassword("1234")
+                });
+            }
+        }
+
+        public bool Login(string usuario, string password)
+        {
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password))
+                return false;
+
+            var hashed = HashPassword(password);
+            return _users.Any(u => u.UsuarioNombre == usuario && u.Password == hashed);
+        }
+
+        private string HashPassword(string password)
+        {
+            using var sha = SHA256.Create();
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hash = sha.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
+    }
+}

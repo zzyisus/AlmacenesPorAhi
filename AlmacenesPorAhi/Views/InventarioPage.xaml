@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.InventarioPage"
+             Title="Inventario"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+ Agregar" Clicked="OnAgregarClicked" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Barra de búsqueda -->
+        <VerticalStackLayout Grid.Row="0" Padding="16,12" Spacing="10" BackgroundColor="White">
+            <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False"
+                   Padding="4,0">
+                <SearchBar x:Name="searchBar" Placeholder="Buscar producto, color, talla..."
+                           SearchCommand="{Binding SearchCommand}"
+                           TextChanged="SearchBar_TextChanged"
+                           BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Scroll de categorías -->
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout x:Name="stackCategorias" Spacing="8" />
+            </ScrollView>
+        </VerticalStackLayout>
+
+        <!-- Lista de productos -->
+        <CollectionView x:Name="listaProductos" Grid.Row="1" Margin="12"
+                        SelectionMode="Single" SelectionChanged="ListaProductos_SelectionChanged"
+                        EmptyView="No se encontraron productos.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,4" CornerRadius="14" HasShadow="True"
+                           Padding="12" BackgroundColor="White">
+                        <Grid ColumnDefinitions="80, *, Auto" ColumnSpacing="12"
+                              RowDefinitions="Auto,Auto,Auto">
+
+                            <!-- Imagen placeholder -->
+                            <Frame Grid.RowSpan="3" Grid.Column="0" BackgroundColor="#F1F5F9"
+                                   CornerRadius="10" HasShadow="False" Padding="0"
+                                   HeightRequest="80" WidthRequest="80">
+                                <Label Text="📦" FontSize="36"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+
+                            <!-- Nombre y descripción -->
+                            <Label Grid.Column="1" Text="{Binding Nombre}"
+                                   FontAttributes="Bold" FontSize="16" TextColor="#1E293B" />
+                            <Label Grid.Column="1" Grid.Row="1"
+                                   Text="{Binding Description}" FontSize="12"
+                                   TextColor="#64748B" LineBreakMode="TailTruncation" />
+                            <Label Grid.Column="1" Grid.Row="2"
+                                   Text="{Binding Talla, StringFormat='Talla: {0}'}"
+                                   FontSize="12" TextColor="#94A3B8" />
+
+                            <!-- Precio y stock -->
+                            <Label Grid.Column="2" Grid.Row="0"
+                                   Text="{Binding Precio, StringFormat='${0:N0}'}"
+                                   FontAttributes="Bold" FontSize="15" TextColor="#1E3A5F"
+                                   HorizontalOptions="End" />
+
+                            <Frame Grid.Column="2" Grid.Row="1"
+                                   BackgroundColor="{Binding StockBgColor}" CornerRadius="8"
+                                   HasShadow="False" Padding="8,4" HorizontalOptions="End">
+                                <Label Text="{Binding Stock, StringFormat='{0} uds'}"
+                                       TextColor="{Binding StockColor}"
+                                       FontSize="12" FontAttributes="Bold" />
+                            </Frame>
+
+                            <Label Grid.Column="2" Grid.Row="2"
+                                   Text="{Binding StockEstado}"
+                                   FontSize="10" TextColor="{Binding StockColor}"
+                                   HorizontalOptions="End" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

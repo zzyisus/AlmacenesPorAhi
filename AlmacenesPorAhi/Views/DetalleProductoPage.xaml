@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.DetalleProductoPage"
+             Title="Detalle del Producto"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Eliminar" Clicked="BtnEliminar_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Imagen y nombre -->
+            <Frame BackgroundColor="#1E3A5F" CornerRadius="16" HasShadow="True" Padding="24">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="📦" FontSize="52" HorizontalOptions="Center" />
+                    <Label x:Name="lblNombre" Text="" FontSize="22" FontAttributes="Bold"
+                           TextColor="White" HorizontalOptions="Center" />
+                    <Label x:Name="lblDescripcion" Text="" FontSize="13"
+                           TextColor="#93C5FD" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Datos del producto -->
+            <Frame BackgroundColor="White" CornerRadius="14" HasShadow="True" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Detalles" FontSize="15" FontAttributes="Bold" TextColor="#1E293B" />
+
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="12">
+                        <VerticalStackLayout>
+                            <Label Text="Precio" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblPrecio" FontSize="18" FontAttributes="Bold" TextColor="#1E3A5F" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Stock" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblStock" FontSize="18" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1">
+                            <Label Text="Talla" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblTalla" FontSize="15" TextColor="#1E293B" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                            <Label Text="Color" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblColor" FontSize="15" TextColor="#1E293B" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                            <Label Text="Categoría" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblCategoria" FontSize="15" TextColor="#1E293B" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                            <Label Text="Estado de Stock" FontSize="11" TextColor="#94A3B8" />
+                            <Label x:Name="lblEstado" FontSize="15" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Acciones -->
+            <Button Text="↩️  Registrar Devolución de este Producto"
+                    Clicked="BtnRegistrarDevolucion_Clicked"
+                    BackgroundColor="#1E3A5F" TextColor="White"
+                    CornerRadius="12" HeightRequest="52" FontSize="15" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F8FAFC">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="HeightRequest" Value="52" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#1E293B" />
+            <Setter Property="PlaceholderColor" Value="#94A3B8" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="28,60,28,28" Spacing="0" VerticalOptions="Center">
+
+            <!-- Logo & Brand -->
+            <Frame BackgroundColor="#1E3A5F" CornerRadius="24" HeightRequest="88" WidthRequest="88"
+                   HorizontalOptions="Center" HasShadow="True" Padding="0">
+                <Label Text="📦" FontSize="44" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+
+            <Label Text="AlmacenesPorAhí" FontSize="26" FontAttributes="Bold"
+                   TextColor="#1E293B" HorizontalOptions="Center" Margin="0,16,0,4" />
+            <Label Text="Sistema de Inventario" FontSize="14"
+                   TextColor="#64748B" HorizontalOptions="Center" Margin="0,0,0,40" />
+
+            <!-- Card de login -->
+            <Frame BackgroundColor="White" CornerRadius="20" HasShadow="True" Padding="24">
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="Iniciar sesión" FontSize="20" FontAttributes="Bold"
+                           TextColor="#1E293B" />
+
+                    <!-- Campo Usuario -->
+                    <Frame BackgroundColor="#F1F5F9" CornerRadius="12" Padding="4,0" HasShadow="False">
+                        <VerticalStackLayout>
+                            <Label Text="Usuario" FontSize="11" TextColor="#64748B"
+                                   Margin="12,8,0,0" />
+                            <Entry x:Name="txtUsuario" Placeholder="Ingresa tu usuario"
+                                   ReturnType="Next" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Campo Contraseña -->
+                    <Frame BackgroundColor="#F1F5F9" CornerRadius="12" Padding="4,0" HasShadow="False">
+                        <VerticalStackLayout>
+                            <Label Text="Contraseña" FontSize="11" TextColor="#64748B"
+                                   Margin="12,8,0,0" />
+                            <Entry x:Name="txtPassword" Placeholder="Ingresa tu contraseña"
+                                   IsPassword="True" ReturnType="Done"
+                                   ReturnCommand="{Binding LoginCommand}" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Error label -->
+                    <Label x:Name="lblError" TextColor="#DC2626" FontSize="13"
+                           IsVisible="False" HorizontalOptions="Center" />
+
+                    <!-- Botón ingresar -->
+                    <Button x:Name="btnIngresar" Text="Ingresar" Clicked="BtnIngresar_Clicked"
+                            BackgroundColor="#1E3A5F" TextColor="White"
+                            CornerRadius="12" HeightRequest="52" FontAttributes="Bold"
+                            FontSize="16" Margin="0,8,0,0" />
+
+                    <!-- Hint -->
+                    <Label Text="💡 Demo: usuario admin, contraseña 1234"
+                           FontSize="11" TextColor="#94A3B8"
+                           HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="© 2026 AlmacenesPorAhí" FontSize="11" TextColor="#CBD5E1"
+                   HorizontalOptions="Center" Margin="0,24,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

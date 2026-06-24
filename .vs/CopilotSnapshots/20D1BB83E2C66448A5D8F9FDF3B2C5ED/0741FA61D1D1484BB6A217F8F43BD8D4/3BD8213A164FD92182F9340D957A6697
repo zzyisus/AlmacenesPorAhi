@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Services
+{
+    public class DevolucionService
+    {
+        public void RegistrarDevolucion(
+            Producto producto,
+            int cantidad)
+        {
+            producto.Stock += cantidad;
+        }
+    }
+}

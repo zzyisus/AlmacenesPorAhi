@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.AgregarProductoPage"
+             Title="Agregar Producto"
+             BackgroundColor="#F8FAFC">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Frame BackgroundColor="White" CornerRadius="14" HasShadow="True" Padding="16">
+                <VerticalStackLayout Spacing="14">
+
+                    <Label Text="Información del Producto" FontSize="16"
+                           FontAttributes="Bold" TextColor="#1E293B" />
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Nombre *" FontSize="12" TextColor="#64748B" />
+                        <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                            <Entry x:Name="txtNombre" Placeholder="Ej: Polera básica" TextColor="#1E293B" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Descripción" FontSize="12" TextColor="#64748B" />
+                        <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4">
+                            <Editor x:Name="txtDescripcion" HeightRequest="70"
+                                    Placeholder="Breve descripción del producto"
+                                    TextColor="#1E293B" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Talla" FontSize="12" TextColor="#64748B" />
+                            <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                                <Entry x:Name="txtTalla" Placeholder="S, M, L, XL..." TextColor="#1E293B" />
+                            </Frame>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Color" FontSize="12" TextColor="#64748B" />
+                            <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                                <Entry x:Name="txtColor" Placeholder="Negro, Azul..." TextColor="#1E293B" />
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Precio *" FontSize="12" TextColor="#64748B" />
+                            <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                                <Entry x:Name="txtPrecio" Placeholder="0" Keyboard="Numeric" TextColor="#1E293B" />
+                            </Frame>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Stock inicial *" FontSize="12" TextColor="#64748B" />
+                            <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                                <Entry x:Name="txtStock" Placeholder="0" Keyboard="Numeric" TextColor="#1E293B" />
+                            </Frame>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Categoría" FontSize="12" TextColor="#64748B" />
+                        <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4,0">
+                            <Entry x:Name="txtCategoria" Placeholder="Ropa, Calzado, Accesorios..." TextColor="#1E293B" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Guardar Producto" Clicked="BtnGuardar_Clicked"
+                    BackgroundColor="#1E3A5F" TextColor="White"
+                    CornerRadius="12" HeightRequest="52"
+                    FontAttributes="Bold" FontSize="16" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

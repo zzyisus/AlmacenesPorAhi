@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlmacenesPorAhi.Views.DevolucionPage"
+             Title="Registrar Devolución"
+             BackgroundColor="#F8FAFC">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Header -->
+            <Frame BackgroundColor="#1E3A5F" CornerRadius="14" HasShadow="True" Padding="16">
+                <HorizontalStackLayout Spacing="12">
+                    <Label Text="↩️" FontSize="28" VerticalOptions="Center" />
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Nueva Devolución" FontSize="18" FontAttributes="Bold"
+                               TextColor="White" />
+                        <Label x:Name="lblFecha" FontSize="12" TextColor="#93C5FD" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Sección: Producto -->
+            <Frame BackgroundColor="White" CornerRadius="14" HasShadow="True" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Datos del Producto" FontSize="15" FontAttributes="Bold"
+                           TextColor="#1E293B" />
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="ID del Producto *" FontSize="12" TextColor="#64748B" />
+                        <Frame BackgroundColor="#F1F5F9" CornerRadius="10"
+                               HasShadow="False" Padding="4,0">
+                            <Entry x:Name="txtProductoId" Placeholder="Ej: 1"
+                                   Keyboard="Numeric" TextChanged="TxtProductoId_TextChanged"
+                                   TextColor="#1E293B" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Info del producto encontrado -->
+                    <Frame x:Name="frameProductoInfo" BackgroundColor="#F0FDF4" CornerRadius="10"
+                           HasShadow="False" Padding="12" IsVisible="False">
+                        <VerticalStackLayout Spacing="2">
+                            <Label x:Name="lblProductoNombre" FontAttributes="Bold"
+                                   TextColor="#166534" FontSize="15" />
+                            <Label x:Name="lblProductoStock" FontSize="13" TextColor="#16A34A" />
+                            <Label x:Name="lblProductoPrecio" FontSize="13" TextColor="#64748B" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame x:Name="frameProductoError" BackgroundColor="#FEF2F2" CornerRadius="10"
+                           HasShadow="False" Padding="12" IsVisible="False">
+                        <Label Text="Producto no encontrado" TextColor="#DC2626" FontSize="13" />
+                    </Frame>
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Cantidad a devolver *" FontSize="12" TextColor="#64748B" />
+                        <Frame BackgroundColor="#F1F5F9" CornerRadius="10"
+                               HasShadow="False" Padding="4,0">
+                            <Entry x:Name="txtCantidad" Placeholder="Ej: 2"
+                                   Keyboard="Numeric" TextColor="#1E293B" />
+                        </Frame>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sección: Tipo de Reembolso -->
+            <Frame BackgroundColor="White" CornerRadius="14" HasShadow="True" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Tipo de Resolución" FontSize="15" FontAttributes="Bold"
+                           TextColor="#1E293B" />
+
+                    <Picker x:Name="pickerTipoReembolso" Title="Selecciona una opción"
+                            TextColor="#1E293B" TitleColor="#94A3B8">
+                        <Picker.Items>
+                            <x:String>Crédito a cuenta del cliente</x:String>
+                            <x:String>Reembolso en efectivo</x:String>
+                            <x:String>Cambio por otro producto</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <!-- Monto estimado -->
+                    <Frame BackgroundColor="#EFF6FF" CornerRadius="10" HasShadow="False" Padding="12">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="💰" FontSize="16" />
+                            <Label x:Name="lblMontoEstimado" Text="Monto estimado: $0"
+                                   TextColor="#1E3A5F" FontAttributes="Bold" />
+                        </HorizontalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sección: Motivo -->
+            <Frame BackgroundColor="White" CornerRadius="14" HasShadow="True" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Motivo de la Devolución *" FontSize="15" FontAttributes="Bold"
+                           TextColor="#1E293B" />
+
+                    <Frame BackgroundColor="#F1F5F9" CornerRadius="10" HasShadow="False" Padding="4">
+                        <Editor x:Name="txtMotivo" HeightRequest="90"
+                                Placeholder="Describe el motivo (ej: producto defectuoso, talla incorrecta...)"
+                                TextColor="#1E293B" />
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Botón registrar -->
+            <Button Text="✅  Confirmar Devolución" Clicked="Registrar_Clicked"
+                    BackgroundColor="#1E3A5F" TextColor="White"
+                    CornerRadius="12" HeightRequest="52"
+                    FontAttributes="Bold" FontSize="16" />
+
+            <Button Text="Ver historial de devoluciones" Clicked="BtnHistorial_Clicked"
+                    BackgroundColor="Transparent" TextColor="#64748B"
+                    FontSize="14" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

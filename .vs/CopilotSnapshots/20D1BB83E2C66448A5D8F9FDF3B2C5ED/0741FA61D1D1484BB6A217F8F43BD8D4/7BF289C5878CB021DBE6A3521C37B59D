@@ -1,0 +1,49 @@
+﻿using AlmacenesPorAhi.Services;
+using AlmacenesPorAhi.Models;
+
+namespace AlmacenesPorAhi.Views
+{
+    public partial class InventarioPage : ContentPage
+    {
+        InventarioService servicio;
+
+        public InventarioPage()
+        {
+            InitializeComponent();
+
+            servicio = new InventarioService();
+
+            listaProductos.ItemsSource = servicio.ObtenerProductos();
+
+            listaProductos.SelectionChanged += ListaProductos_SelectionChanged;
+        }
+
+        private async void Button_Clicked(
+            object sender,
+            EventArgs e)
+        {
+            await Navigation.PushAsync(
+                new DevolucionPage());
+        }
+
+        private async void OnAgregarClicked(object sender, EventArgs e)
+        {
+            // simple demo: navigate to a blank page or show dialog to add product
+            await DisplayAlert("Agregar", "Funcionalidad para agregar producto (por implementar)", "OK");
+        }
+
+        private async void ListaProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+            {
+                var producto = e.CurrentSelection[0] as Producto;
+                if (producto != null)
+                {
+                    await DisplayAlert(producto.Nombre, $"Stock: {producto.Stock}\nPrecio: {producto.Precio}", "Cerrar");
+                }
+
+                ((CollectionView)sender).SelectedItem = null;
+            }
+        }
+    }
+}
