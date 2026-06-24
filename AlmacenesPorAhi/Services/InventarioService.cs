@@ -33,7 +33,7 @@ namespace AlmacenesPorAhi.Services
                 new Producto
                 {
                     Id = 3, Nombre = "Zapatilla", Talla = "42", Color = "Blanco",
-                    Precio = 45000, Stock = 0, Categoria = "Calzado",
+                    Precio = 45000, Stock = 2, Categoria = "Calzado",
                     ImageUrl = "zapatilla.png", Description = "Zapatilla deportiva", StockMinimo = 2
                 }
             };
